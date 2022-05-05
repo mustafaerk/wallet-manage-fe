@@ -4,3 +4,4 @@ export const getString = (key) => {
   const trm = StringList[key];
   return trm;
 };
+
