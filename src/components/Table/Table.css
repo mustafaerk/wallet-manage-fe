@@ -1,0 +1,36 @@
+#edit {
+  padding: 5px 15px;
+  background: #435ebe;
+  border-radius: 15px;
+  color: white;
+}
+
+#delete {
+  padding: 5px 15px;
+  background: tomato;
+  border-radius: 15px;
+  color: white;
+}
+
+#table_wrapper {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+#buttonWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+tbody > tr {
+  text-align: center;
+}
+
+
+
+tr td:last-child {
+  width: 20%;
+}

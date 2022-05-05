@@ -1,0 +1,11 @@
+{
+  "areYouSureDelete": "Are you sure you want to delete?",
+  "yes": "Yes",
+  "no": "No",
+  "addNewIncomes": "Add New Incomes",
+  "addNewOutgoing": "Add New Outgoing",
+  "transactionSaved": "Transaction Saved",
+  "categoryDeleted": "Category Deleted",
+  "somethingWentWrong": "Something went wrong!",
+  "categoryUpdated": "Category Updated"
+}
