@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Chart, BarChart } from "components";
+import { getString } from "localization/config";
 import Main from "pages/Layout/Main/index";
 import { useGetAllIncomesQuery, useGetAllOutgoingQuery, useGetAllTransactionQuery } from "redux/slices/user/user";
 import { dataCovertToChart, dataCovertToBar } from "utils/object";
@@ -21,15 +22,15 @@ const DashBoard = () => {
         <div>
           {i3 ? <div> ... </div> :
             <BarChart
-              chartTitle="Incomes and Outcomes"
+              chartTitle={getString('incomesAndOutcomes')}
               data={[outgoingData, incomeData]}
               categories={dates}
             />
           }
         </div>
         <div className="flex items-center justify-center gap-x-2 flex-col sm:flex-row">
-          {i1 ? <div>... </div> : <Chart ChartData={dataCovertToChart(outgings?.data, 'outgoing')} ChartTitle="Outgoing Summary" />}
-          {i2 ? <div>... </div> : <Chart ChartData={dataCovertToChart(incomes?.data, 'incomes')} ChartTitle="Income Summary" />}
+          {i1 ? <div>... </div> : <Chart ChartData={dataCovertToChart(outgings?.data, 'outgoing')} ChartTitle={getString('outgoingSummary')} />}
+          {i2 ? <div>... </div> : <Chart ChartData={dataCovertToChart(incomes?.data, 'incomes')} ChartTitle={getString('incomeSummary')} />}
         </div>
       </div>
     </Main>

@@ -2,10 +2,18 @@
   "areYouSureDelete": "Are you sure you want to delete?",
   "yes": "Yes",
   "no": "No",
+  "incomesAndOutcomes": "Incomes and Outcomes",
   "addNewIncomes": "Add New Incomes",
   "addNewOutgoing": "Add New Outgoing",
+  "newCategorySaved": "New Category Saved",
+  "editIncome": "Edit Income",
+  "editOutgoing": "Edit Outgoing",
   "transactionSaved": "Transaction Saved",
+  "transactionUpdated": "Transaction Updated",
+  "transactionDeleted": "Transaction deleted",
   "categoryDeleted": "Category Deleted",
   "somethingWentWrong": "Something went wrong!",
-  "categoryUpdated": "Category Updated"
+  "categoryUpdated": "Category Updated",
+  "outgoingSummary": "Outgoing Summary",
+  "incomeSummary": "Income Summary"
 }

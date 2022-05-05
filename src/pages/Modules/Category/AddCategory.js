@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 
 import { useCreateCategoryMutation, useUpdateCategoryMutation } from "redux/slices/user/user";
 import { apiResHandler } from "utils/axiosBaseQuery";
+import { getString } from "localization/config";
 
 const AddCategory = ({ defaultCategoryName, isEdit }) => {
     const [categoryName, setCategoryName] = useState('');
@@ -23,7 +24,7 @@ const AddCategory = ({ defaultCategoryName, isEdit }) => {
         if (!isEdit) {
             apiResHandler(createCategory({ data: { name: categoryName } }), () => {
                 Swal.fire(
-                    'New Category Saved',
+                    getString('newCategorySaved'),
                     '',
                     'success'
                 );
@@ -31,7 +32,7 @@ const AddCategory = ({ defaultCategoryName, isEdit }) => {
             }, () => {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Something went wrong',
+                    text: getString('somethingWentWrong'),
                     icon: 'error',
                 })
             })
@@ -39,14 +40,14 @@ const AddCategory = ({ defaultCategoryName, isEdit }) => {
         else {
             apiResHandler(updateCategory({ data: { oldCategory: defaultCategoryName, newCategory: categoryName } }), () => {
                 Swal.fire(
-                    'Category Updated',
+                    getString('categoryUpdated'),
                     '',
                     'success'
                 );
             }, () => {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Something went wrong',
+                    text: getString('somethingWentWrong'),
                     icon: 'error',
                 })
             })

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Table, Modal } from "components";
 import Main from "pages/Layout/Main/index";
+import { getString } from "localization/config";
 import AddNewTransaction from "pages/Modules/Transaction/AddNewTransaction";
 import { useGetAllIncomesQuery, useDeleteTransactionMutation } from "redux/slices/user/user";
 import { objectToArray, moneyTableCols, tableColRef } from "utils/object";
@@ -23,7 +24,7 @@ const Incomes = () => {
   const handleDeleteTransaction = () => {
     apiResHandler(deleteTransaction({ data: { id: deleteId } }), () => {
       Swal.fire(
-        'Transaction Deleted',
+        getString('transactionDeleted'),
         '',
         'success'
       );
@@ -31,7 +32,7 @@ const Incomes = () => {
     }, () => {
       Swal.fire({
         title: 'Error!',
-        text: 'Something went wrong',
+        text: getString('somethingWentWrong'),
         icon: 'error',
       })
     });
@@ -58,7 +59,7 @@ const Incomes = () => {
           setCurrentTransactionInfo({})
         }}>
         <div className="h-80 overflow-y-scroll p-2 bg-darkGray ">
-          <AddNewTransaction isEdit title={"Edit Income"} type={1} data={currentTransactionInfo} fallback={() => setIsOpen(false)} />
+          <AddNewTransaction isEdit title={getString('editIncome')} type={1} data={currentTransactionInfo} fallback={() => setIsOpen(false)} />
         </div>
       </Modal>
       <Modal
@@ -66,16 +67,16 @@ const Incomes = () => {
         handleModalClose={() => setShowDeleteModal(false)}>
         <div className="flex items-center justify-center  h-40 overflow-y-auto p-2 bg-darkGray">
           <div className="flex flex-col items-center gap-2">
-            <strong className="text-black font-semibold text-md">Are you sure you want to delete?</strong>
+            <strong className="text-black font-semibold text-md">{getString('areYouSureDelete')}</strong>
             <div className="p-2 space-x-4">
-              <button className="bg-ligthBlack px-4 py-2 text-white ml-auto rounded-xl" onClick={() => setShowDeleteModal(false)}>No</button>
-              <button className="bg-blue px-4 py-2 text-white ml-auto rounded-xl" onClick={handleDeleteTransaction}>Yes</button>
+              <button className="bg-ligthBlack px-4 py-2 text-white ml-auto rounded-xl" onClick={() => setShowDeleteModal(false)}>{getString('no')}</button>
+              <button className="bg-blue px-4 py-2 text-white ml-auto rounded-xl" onClick={handleDeleteTransaction}>{getString('yes')}</button>
             </div>
           </div>
         </div>
       </Modal>
       <div className="flex flex-col w-full items-center h-full justify-center gap-4">
-        <button onClick={() => navigate('/newTransaction')} className="bg-blue px-4 py-2 text-white ml-auto rounded-xl">Add New Incomes</button>
+        <button onClick={() => navigate('/newTransaction')} className="bg-blue px-4 py-2 text-white ml-auto rounded-xl">{getString('addNewIncomes')}</button>
         <Table data={objectToArray(transactions?.data || [[]])} tableCols={moneyTableCols || []} columnDefs={tableColRef || []} handleDeleteClick={handleDeleteClick} handleEditClick={handleEditClick} />
       </div>
     </Main>

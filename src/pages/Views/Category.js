@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Swal from 'sweetalert2'
 
 import { Table, Modal } from "components";
+import { getString } from "localization/config";
 import Main from "pages/Layout/Main/index";
 import AddCategory from "pages/Modules/Category/AddCategory";
 import { useGetAllCategoriesQuery, useDeleteCategoryMutation } from "redux/slices/user/user";
@@ -22,7 +23,7 @@ const Category = () => {
   const handleDeleteCategory = () => {
     apiResHandler(deleteCategory({ data: { name: selectedCategory } }), () => {
       Swal.fire(
-        'Transaction Deleted',
+        getString('transactionDeleted'),
         '',
         'success'
       );
@@ -30,7 +31,7 @@ const Category = () => {
     }, () => {
       Swal.fire({
         title: 'Error!',
-        text: 'Something went wrong',
+        text: getString('somethingWentWrong'),
         icon: 'error',
       })
     });
@@ -64,7 +65,7 @@ const Category = () => {
         handleModalClose={() => setShowDeleteModal(false)}>
         <div className="flex items-center justify-center  h-40 overflow-y-auto p-2 bg-darkGray">
           <div className="flex flex-col items-center gap-2">
-            <strong className="text-black font-semibold text-md">Are you sure you want to delete?</strong>
+            <strong className="text-black font-semibold text-md">{getString('areYouSureDelete')}</strong>
             <div className="p-2 space-x-4">
               <button className="bg-ligthBlack px-4 py-2 text-white ml-auto rounded-xl" onClick={() => setShowDeleteModal(false)}>No</button>
               <button className="bg-blue px-4 py-2 text-white ml-auto rounded-xl" onClick={handleDeleteCategory}>Yes</button>

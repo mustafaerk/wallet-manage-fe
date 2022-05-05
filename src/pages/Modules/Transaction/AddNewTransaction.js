@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 
 import { useGetAllCategoriesQuery, useCreateTransactionMutation, useUpdateTransactionMutation } from "redux/slices/user/user";
 import { apiResHandler } from "utils/axiosBaseQuery";
+import { getString } from "localization/config";
 
 const AddNewTransaction = ({ title, type, data, isEdit, fallback }) => {
     const { data: categories } = useGetAllCategoriesQuery();
@@ -36,7 +37,7 @@ const AddNewTransaction = ({ title, type, data, isEdit, fallback }) => {
         if (isEdit) {
             apiResHandler(updateTransaction({ data: transactionInfo }), () => {
                 Swal.fire(
-                    'Transaction Saved',
+                    getString('transactionUpdated'),
                     '',
                     'success'
                 );
@@ -52,14 +53,14 @@ const AddNewTransaction = ({ title, type, data, isEdit, fallback }) => {
             }, () => {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Something went wrong',
+                    text: getString('somethingWentWrong'),
                     icon: 'error',
                 })
             });
         } else {
             apiResHandler(createTransaction({ data: transactionInfo }), () => {
                 Swal.fire(
-                    'Transaction Saved',
+                    getString('transactionSaved'),
                     '',
                     'success'
                 );
@@ -75,7 +76,7 @@ const AddNewTransaction = ({ title, type, data, isEdit, fallback }) => {
             }, () => {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Something went wrong',
+                    text: getString('somethingWentWrong'),
                     icon: 'error',
                 })
             });
